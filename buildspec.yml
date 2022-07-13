@@ -8,18 +8,25 @@ phases:
       - sudo apt update
       - sudo npm install pm2 -g
       - sudo apt install jq -y
-      - MONGODB_URI=$(aws ssm get-parameters --name /aryan/db_replicaset_url  --query "Parameters[0]" | jq -r .Value)
-      - SECRET=$(aws ssm get-parameters --name /aryan/jwt/secret  --query "Parameters[0]" | jq -r .Value)
-      - PORT=$(aws ssm get-parameters --name /aryan/nodejs/port --with-decryption --query "Parameters[0]" | jq -r .Value)
+      - MONGODB_URI=$(aws ssm get-parameters --name /aryan/db_replicaset_url --with-decryption --query "Parameters[0]" | jq -r .Value)
+      - SECRET=$(aws ssm get-parameters --name /aryan/jwt/secret --with-decryption --query "Parameters[0]" | jq -r .Value)
+      - PORT=$(aws ssm get-parameters --name /aryan/nodejs/port  --query "Parameters[0]" | jq -r .Value)
       - NODE_ENV=$(aws ssm get-parameters --name /aryan/nodejs/env  --query "Parameters[0]" | jq -r .Value)
       - echo $MONGODB_URI $SECRET $PORT $NODE_ENV
-      - pwd
+      - npm install 
+      - npm install dotenv      
+      
 
   build:
     commands:
+      - echo "MONGODB_URI=$MONGODB_URI" > .env
+      - echo "SECRET=$SECRET" >> .env
+      - echo "PORT=$PORT" >> .env
+      - echo "NODE_ENV=$NODE_ENV" >> .env
       - echo Build Completed on `date`
   post_build:
     commands:
+      - cat .env
       - echo Congratulations!!!!!
 
 
