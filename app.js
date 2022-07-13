@@ -9,6 +9,7 @@ var http = require('http'),
     errorhandler = require('errorhandler'),
     mongoose = require('mongoose');
 
+require('dotenv').config();
 var isProduction = process.env.NODE_ENV === 'production';
 
 // Create global app object
@@ -42,6 +43,9 @@ require('./models/Article');
 require('./models/Comment');
 require('./config/passport');
 
+app.get('/', (req, res) => {
+    res.json({test: 'test success !!!'})
+});
 app.use(require('./routes'));
 
 /// catch 404 and forward to error handler
