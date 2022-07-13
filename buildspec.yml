@@ -1,0 +1,28 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14.x
+  pre_build:    
+    commands:
+      - sudo apt update
+      - sudo npm install pm2 -g
+      - sudo apt install jq -y
+      - MONGODB_URI=$(aws ssm get-parameters --name /aryan/db_replicaset_url  --query "Parameters[0]" | jq -r .Value)
+      - SECRET=$(aws ssm get-parameters --name /aryan/jwt/secret  --query "Parameters[0]" | jq -r .Value)
+      - PORT=$(aws ssm get-parameters --name /aryan/nodejs/port --with-decryption --query "Parameters[0]" | jq -r .Value)
+      - NODE_ENV=$(aws ssm get-parameters --name /aryan/nodejs/env  --query "Parameters[0]" | jq -r .Value)
+      - echo $MONGODB_URI $SECRET $PORT $NODE_ENV
+      - pwd
+
+  build:
+    commands:
+      - echo Build Completed on `date`
+  post_build:
+    commands:
+      - echo Congratulations!!!!!
+
+
+artifacts:
+  files:
+    - '**/*'
