@@ -30,7 +30,7 @@ phases:
       - pm2 start app.js
       - echo `curl localhost:5000/`
       - echo `curl localhost:5000/api/tags`
-      - echo `pm2 logs`
+      - cat ~/.pm2/logs/app-out.log
       - pm2 stop 0
       - pm2 delete 0
       - echo Congratulations!!!!!
