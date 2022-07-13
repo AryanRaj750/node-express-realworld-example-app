@@ -15,7 +15,7 @@ phases:
       - echo $MONGODB_URI $SECRET $PORT $NODE_ENV
       - npm install 
       - npm install dotenv      
-      
+      - sudo apt install net-tools
 
   build:
     commands:
@@ -26,8 +26,8 @@ phases:
       - echo Build Completed on `date`
   post_build:
     commands:
-      - cat app.js
       - pm2 start app.js
+      - echo `sudo netstat -tnlp`
       - echo `curl localhost:5000/`
       - echo `curl localhost:5000/api/tags`
       - cat ~/.pm2/logs/app-out.log
