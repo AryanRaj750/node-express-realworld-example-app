@@ -1,2 +1,2 @@
 #!/bin/bash
-pm2 stop 
+sudo systemctl stop pm2-ubuntu
