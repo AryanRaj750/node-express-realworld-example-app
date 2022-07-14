@@ -10,9 +10,7 @@ file_exists_behavior: OVERWRITE
 hooks:
 
   ApplicationStop:
-    - location: scripts/stopServer.sh
-  BeforeInstall:
-    - location: scripts/serverPermission.sh 
+    - location: scripts/stopServer.sh 
 
   ApplicationStart:
     - location: scripts/startServer.sh
