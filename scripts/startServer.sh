@@ -1,2 +1,2 @@
 #!/bin/bash
-pm2 start app.js
+sudo systemctl start pm2-ubuntu
