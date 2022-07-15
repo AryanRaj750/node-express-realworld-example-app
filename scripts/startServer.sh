@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo systemctl start pm2-ubuntu1
+sudo systemctl start pm2-ubuntu
