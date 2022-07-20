@@ -8,6 +8,6 @@ then
 else
 
    sudo cat ~/.pm2/logs/app-error.log
-   exit
+   exit1
 
 fi
