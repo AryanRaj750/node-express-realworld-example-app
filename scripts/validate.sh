@@ -1,11 +1,13 @@
 #/bin/bash
-nc -z -W 2 localhost 23
-if [ $? == 0 ]
+
+s1=$(curl -LI localhost:5000/ -o /dev/null -w '%{http_code}\n' -s)
+if [ $s1 == 200 ]
 then
-        echo 'OK'
+   echo 'OK'
+
 else
 
-        echo `~/.pm2/log/app-error.log`
-        exit
+   sudo cat ~/.pm2/logs/app-error.log
+   exit
 
 fi
