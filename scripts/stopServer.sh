@@ -1,5 +1,5 @@
 #!/bin/bash
-cd cd /home/ubuntu/nodeApp
+cd /home/ubuntu/nodeApp
 
 # this script is to check whether the pm2 app is srnning or not
 echo "running the script"
