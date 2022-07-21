@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/ubuntu/node-app
+cd /home/ubuntu
 
 pm2 describe app > /dev/null
 status=$?
