@@ -4,8 +4,13 @@ os: linux
 files:
   - source: /
     destination: /home/ubuntu/nodeApp
+    overwrite: true
+file_exists_behavior: OVERWRITE
 
 hooks:        
+  ApplicationStop:
+    - location: scripts/stopServer.sh
+    
   ApplicationStart:
     - location: scripts/startServer.sh
   
