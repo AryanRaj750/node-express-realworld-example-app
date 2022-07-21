@@ -1,4 +1,7 @@
 #!/bin/bash
+
+cd /home/ubuntu/node-app
+
 pm2 describe app > /dev/null
 status=$?
 if [ $status -ne 0 ]
