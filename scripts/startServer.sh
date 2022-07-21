@@ -1,3 +1,3 @@
 #!/bin/bash
-ls
-pm2 start app.js
+pwd
+sudo pm2 start -f app.js
