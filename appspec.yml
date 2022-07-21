@@ -5,10 +5,7 @@ files:
   - source: /
     destination: /home/ubuntu
 
-hooks:    
-  ApplicationStop:
-    - location: scripts/stopServer.sh
-    
+hooks:        
   ApplicationStart:
     - location: scripts/startServer.sh
   
