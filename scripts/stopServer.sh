@@ -1,14 +1,16 @@
 #!/bin/bash
+cd cd /home/ubuntu/nodeApp
 
-cd /home/ubuntu
+# this script is to check whether the pm2 app is srnning or not
+echo "running the script"
 
 pm2 describe app > /dev/null
-status=$?
-if [ $status -ne 0 ]
-then
-  echo 'App is not running'
+RUNNING=$?
+
+if [ "${RUNNING}" -ne 0 ]; then
+        echo "App is not running"
 else
-  echo 'App is running'
-  echo 'App will be Terminated'
-  pm2 stop app
-fi
+        echo "APP IS RUNNING"
+        echo "APP WILL BE TERMINIATED"
+        sudo pm2 stop app.js
+fi;
