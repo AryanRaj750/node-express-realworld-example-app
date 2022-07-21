@@ -1,2 +1,3 @@
 #!/bin/bash
-pm2 start app
+ls
+pm2 start build
