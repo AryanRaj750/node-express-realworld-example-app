@@ -13,11 +13,12 @@ phases:
       - PORT=$(aws ssm get-parameters --name /aryan/nodejs/port  --query "Parameters[0]" | jq -r .Value)
       - NODE_ENV=$(aws ssm get-parameters --name /aryan/nodejs/env  --query "Parameters[0]" | jq -r .Value)
       - echo $MONGODB_URI $SECRET $PORT $NODE_ENV
-      - npm install 
-      - npm install dotenv
+      
 
   build:
     commands:
+      - npm install 
+      - npm install dotenv
       - echo "MONGODB_URI=$MONGODB_URI" > .env
       - echo "SECRET=$SECRET" >> .env
       - echo "PORT=$PORT" >> .env
