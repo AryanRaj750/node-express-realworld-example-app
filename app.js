@@ -44,7 +44,7 @@ require('./models/Comment');
 require('./config/passport');
 
 app.get('/', (req, res) => {
-    res.json({test: 'First Test Success !'})
+    res.json({test: 'First Test Success 1'})
 });
 app.use(require('./routes'));
 
